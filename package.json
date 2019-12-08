@@ -13,7 +13,7 @@
     "http-server": "^0.9.0",
     "method-override": "^2.3.7",
     "mongodb": "^2.2.22",
-    "mongoose": "^4.7.8"
+    "mongoose": "^5.7.14"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
@@ -21,7 +21,7 @@
     "method-override": "^2.3.7",
     "mongodb": "^2.2.22",
     "http-server": "^0.9.0",
-    "mongoose": "^4.7.8"
+    "mongoose": "^5.7.14"
   },
   "description": ""
 }
