@@ -1,9 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-
-
-var mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
 
 var showtimeSchema = mongoose.Schema({
   showTimings: String,
@@ -25,7 +22,6 @@ router.get('/getTimings/:id', function(req,res){
 });
 
 router.post('/addTimings', function(req, res){
-
 
   var showtime = new Showtime({
     showTimings : req.body.STiming,

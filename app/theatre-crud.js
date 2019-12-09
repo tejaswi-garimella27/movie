@@ -1,17 +1,16 @@
-var express = require('express');
-var router = express.Router();
-bodyParser = require('body-parser'); //parses information from POST
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-var mongoose = require('mongoose');
-
-var theatreSchema = mongoose.Schema({            // i am creating creating schema for theatre
+var theatreSchema = mongoose.Schema({ 
 	theatreName: String,
 	theatreSeats: Number,
 	ticketPrice: Number,
 	cityName: String
 });
 
-var Theatre = mongoose.model('Theatre',theatreSchema,'theatre');   // i am defining Theatre model here
+var Theatre = mongoose.model('Theatre',theatreSchema,'theatre');
 
 router.get('/getTheatre', function (req, res) {
     Theatre.find({}, function (err, docs) {
@@ -33,7 +32,7 @@ var theatre = new Theatre({
   ticketPrice: req.body.TPrice,
   cityName: req.body.TCity
   });
-    theatre.save(function(err, docs){       // i am saving the theatre variable by (var) theatre.save
+    theatre.save(function(err, docs){
      if ( err ) throw err;
     res.json(docs);
 });
@@ -41,19 +40,18 @@ var theatre = new Theatre({
 });
 
 router.delete('/deleteTheatre/:id', function(req, res){
-      Theatre.remove({_id:req.params.id}, function(err, docs){    // i am removing the data from Theatre model
+      Theatre.remove({_id:req.params.id}, function(err, docs){
         res.json(docs);
     });
 });
 
 router.put('/updateTheatre/:id', function(req, res){
-   Theatre.findOneAndUpdate({_id:req.params.id}, req.body, function (err, data) {      // i am updating the data from the theatre model by finding the required data- findOneAndUpdate
+   Theatre.findOneAndUpdate({_id:req.params.id}, req.body, function (err, data) {
       res.json(data);
     });
 });
 
-
-// catch 404 and forward to error handler
+//Error Handler
 router.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

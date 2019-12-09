@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-bodyParser = require('body-parser'); //parses information from POST
-
+bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var movieSchema = mongoose.Schema({
@@ -49,13 +48,10 @@ router.post('/addMovie', function(req, res){
     moviActors: actors
 
   });
-
   movie.save(function(err, docs){
     if ( err ) throw err;
-    
     res.json(docs);
   });
-
 
   })
 
@@ -71,8 +67,7 @@ router.put('/updateMovie/:id', function(req, res){
     });
 })
 
-
-// catch 404 and forward to error handler
+//Error Handler
 router.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

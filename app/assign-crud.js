@@ -1,15 +1,7 @@
-var express = require('express');
-var router = express.Router();
-bodyParser = require('body-parser'); //parses information from POST
-
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-// var bookSchema = mongoose.Schema({
-//   bookingDetails: [{
-//    orderId: String,
-//    userSeats: String }]
-// });
+const express = require('express')
+const router = express.Router();
+const bodyParser = require('body-parser'); 
+const mongoose = require('mongoose');
 
 var assignSchema = mongoose.Schema({
     cityName: String,
@@ -64,24 +56,6 @@ router.put('/addBooking/:id/', function(req, res){
   });
 });
 
-// router.put('/addBooking/:id/', function(req, res){
-//   var booking = new Assign({
-//     bookingSchema: [{
-//       orderId: req.body.OId,
-//       userSeats: req.body.USeats }]
-//   });
-//   console.log(booking);
-//   console.log(req.params.id);
-//   console.log("Inside ASSIGN CRUD, Just thrown bookingDetails");
-//
-//   booking.findOneAndUpdate({ _id: req.params.id},
-//                                  { $addToSet: { bookingSchema: [{ bookSchema:  req.body }] }},
-//                                  {upsert: true},
-//                                  function(err,doc){
-//                                    console.log(doc);
-//                                  });
-// });
-
 router.post('/addAssign', function(req, res){
 
  var assigning = new Assign({
@@ -131,8 +105,7 @@ router.delete('/deleteAssign/:id', function(req, res){
     });
 })
 
-
-// catch 404 and forward to error handler
+//Error Handler
 router.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

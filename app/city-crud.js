@@ -1,8 +1,7 @@
-var express = require('express');
-var router = express.Router();
-bodyParser = require('body-parser'); //parses information from POST
-
-var mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser'); 
+const mongoose = require('mongoose');
 
 var citySchema = mongoose.Schema({
 
@@ -10,18 +9,15 @@ cityName: String
  });
 var City = mongoose.model('City', citySchema, 'citi');
 
-
 router.get('/getCity', function (req, res) {
     City.find({}, function (err, docs) {
          res.json(docs);
-
     });
 });
 
 router.get('/getCity/:id', function (req, res) {
      City.find({_id: req.params.id}, function (err, docs) {
          res.json(docs);
-
     });
 });
 
@@ -33,7 +29,6 @@ router.post('/addCity', function(req, res){
     if ( err ) throw err;
     res.json(docs);
 });
-
 
  });
 
@@ -49,8 +44,7 @@ router.put('/updateCity/:id', function(req, res){
     });
 })
 
-
-// catch 404 and forward to error handler
+//Error Handler
 router.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

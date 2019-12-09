@@ -1,8 +1,7 @@
-var express = require('express');
-var router = express.Router();
-bodyParser = require('body-parser'); //parses information from POST
-
-var mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 var bookSchema = mongoose.Schema({
   orderId: String,
@@ -11,8 +10,6 @@ var bookSchema = mongoose.Schema({
 });
 
 var Book = mongoose.model('Book', bookSchema, 'booking');
-
-
 router.get('/getBooking', function (req, res) {
     Book.find({}, function (err, docs) {
          res.json(docs);
@@ -49,9 +46,7 @@ router.put('/updateBooking/:id', function(req, res){
       res.json(data);
     });
 })
-
-
-// catch 404 and forward to error handler
+//Error Handler
 router.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
